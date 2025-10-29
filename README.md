@@ -131,7 +131,7 @@ Step 3: Create Role & RoleBinding
 role.yml
 
 
-apiVersion: rbac.authorization.k8s.io/v1
+apiVersion: rbac.authorization.k8s.io/v1                                                     
 kind: Role
 metadata:
   namespace: webapps
