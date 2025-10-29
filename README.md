@@ -134,8 +134,8 @@ role.yml
 apiVersion: rbac.authorization.k8s.io/v1                                                     
 kind: Role
 metadata:
-  namespace: webapps
-  name: jenkins-role                          
+        namespace: webapps
+        name: jenkins-role                          
 rules:
   - apiGroups: [""]                                                      
     resources: ["pods", "services", "configmaps"]                                  
