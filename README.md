@@ -135,31 +135,31 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: webapps
-  name: jenkins-role
+  name: jenkins-role                          
 rules:
-  - apiGroups: [""]
-    resources: ["pods", "services", "configmaps"]
-    verbs: ["get", "list", "create", "delete", "update", "watch"]
-  - apiGroups: ["apps"]
-    resources: ["deployments"]
-    verbs: ["get", "list", "create", "delete", "update", "watch"]
+  - apiGroups: [""]                                                      
+    resources: ["pods", "services", "configmaps"]                                  
+    verbs: ["get", "list", "create", "delete", "update", "watch"]                                                  
+  - apiGroups: ["apps"]                         
+    resources: ["deployments"]                                                                  
+    verbs: ["get", "list", "create", "delete", "update", "watch"]                                                                     
 
 
 
 
-apiVersion: rbac.authorization.k8s.io/v1
+apiVersion: rbac.authorization.k8s.io/v1                               
 kind: RoleBinding
-metadata:
+metadata:                       
   name: jenkins-rolebinding
-  namespace: webapps
-subjects:
-  - kind: ServiceAccount
-    name: jenkins
-    namespace: webapps
-roleRef:
-  kind: Role
-  name: jenkins-role
-  apiGroup: rbac.authorization.k8s.io
+  namespace: webapps                                          
+subjects:                          
+  - kind: ServiceAccount                                              
+    name: jenkins                           
+    namespace: webapps                        
+roleRef:                                               
+  kind: Role                                    
+  name: jenkins-role                             
+  apiGroup: rbac.authorization.k8s.io                             
 
 
 
@@ -173,14 +173,14 @@ Step 4: Create Secret Token for Jenkins
 secret.yml
 
 apiVersion: v1
-kind: Secret
-metadata:
-  name: mysecret
-  namespace: webapps
-  annotations:
-    kubernetes.io/service-account.name: jenkins
+kind: Secret                
+metadata:                    
+  name: mysecret                 
+  namespace: webapps                 
+  annotations:                     
+    kubernetes.io/service-account.name: jenkins                  
 type: kubernetes.io/service-account-token
-
+                
 kubectl apply -f secret.yml
 kubectl describe secret mysecret -n webapps
 
