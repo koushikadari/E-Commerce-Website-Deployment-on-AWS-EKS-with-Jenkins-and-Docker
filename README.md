@@ -133,7 +133,7 @@ role.yml
 
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
-metadata:
+metadata:                                          
   namespace: webapps
   name: jenkins-role
 rules:
