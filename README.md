@@ -131,18 +131,18 @@ Step 3: Create Role & RoleBinding
 role.yml
 
 
-apiVersion: rbac.authorization.k8s.io/v1                                                     
+apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-        namespace: webapps
-        name: jenkins-role                          
+  namespace: webapps
+  name: jenkins-role
 rules:
-  - apiGroups: [""]                                                      
-    resources: ["pods", "services", "configmaps"]                                  
-    verbs: ["get", "list", "create", "delete", "update", "watch"]                                                  
-  - apiGroups: ["apps"]                         
-    resources: ["deployments"]                                                                  
-    verbs: ["get", "list", "create", "delete", "update", "watch"]                                                                     
+  - apiGroups: [""]
+    resources: ["pods", "services", "configmaps"]
+    verbs: ["get", "list", "create", "delete", "update", "watch"]
+  - apiGroups: ["apps"]
+    resources: ["deployments"]
+    verbs: ["get", "list", "create", "delete", "update", "watch"]
 
 
 
