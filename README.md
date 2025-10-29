@@ -1,5 +1,14 @@
 # E-Commerce-Website-Deployment-on-AWS-EKS-with-Jenkins-and-Docker
 E-Commerce Website Deployment on AWS EKS with Jenkins and Docker
+
+| Tool        | Purpose                                  |
+| ----------- | ---------------------------------------- |
+| **AWS CLI** | Manage AWS services                      |
+| **kubectl** | Manage Kubernetes cluster                |
+| **eksctl**  | Create and manage EKS clusters           |
+| **Docker**  | Build and run containerized applications |
+| **Jenkins** | Automate CI/CD pipelines                 |
+
 🧩 1. CLI Tools to Install
 
 🔹 AWS CLI                                                             
@@ -81,13 +90,12 @@ Then install Jenkins and access via:             http://<EC2-Public-IP>:8080
 
 🔹 Jenkins Plugins to Install
 
-Pipeline: Stage View
-
-Docker Pipeline
-
-Kubernetes Plugin
-
-Kubernetes CLI Plugin
+| Plugin               | Purpose                           |
+| -------------------- | --------------------------------- |
+| Pipeline: Stage View | Visualize pipeline stages         |
+| Docker Pipeline      | Build & push Docker images        |
+| Kubernetes Plugin    | Deploy to Kubernetes              |
+| Kubernetes CLI       | Run kubectl commands from Jenkins |
 
 
 
@@ -121,19 +129,16 @@ Step 2: Create Service Account
 kubectl apply -f service.yml
 
 
-
 Step 3: Create Role & RoleBinding
 
 (Allow Jenkins to manage deployments, pods, and services)
 
 
-
 role.yml
-
 
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
-metadata:                                          
+metadata:
   namespace: webapps
   name: jenkins-role
 rules:
@@ -144,7 +149,7 @@ rules:
     resources: ["deployments"]
     verbs: ["get", "list", "create", "delete", "update", "watch"]
 
-
+Rolebinding.yml
 
 
 apiVersion: rbac.authorization.k8s.io/v1                               
@@ -191,9 +196,21 @@ Use this token in Jenkins Kubernetes Credentials for accessing your cluster.
 
 🧼 9. Delete EKS Cluster (Cleanup)                                          
 eksctl delete cluster --name EKS-1 --region us-east-1
+ 
 
+✅ Summary
 
+This setup achieves:
 
+Automated CI/CD pipeline with Jenkins
+
+Docker image build and push to Docker Hub
+
+Kubernetes deployment on AWS EKS
+
+Secure access via ServiceAccount and RBAC
+
+Full cloud-native E-commerce app deployment
 
 
 
